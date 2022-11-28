@@ -18,7 +18,7 @@ public class ShipFoot : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit , _springRestDistance * 1.5f))
+        if (Physics.Raycast(transform.position, -transform.up, out hit , _springRestDistance * 1.25f))
         {
             
             Vector3 tireWorldVelocity = _rigidbody.GetPointVelocity(transform.position);
