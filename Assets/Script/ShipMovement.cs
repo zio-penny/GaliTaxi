@@ -10,11 +10,9 @@ public class ShipMovement : MonoBehaviour
 
     private Vector3 _velocity = Vector3.zero;
     private Vector3 _acceleration = Vector3.zero;
-    private CharacterController _characterController;
     
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -26,7 +24,6 @@ public class ShipMovement : MonoBehaviour
 
 
         _velocity += _acceleration;
-        _characterController.Move(_velocity * Time.deltaTime);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

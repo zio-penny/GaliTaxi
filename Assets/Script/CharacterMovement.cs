@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private CharacterController _characterController;
+    
+    private Vector3 _acceleration;
+    
+    private void Update()
     {
         
     }
