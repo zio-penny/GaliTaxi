@@ -8,6 +8,7 @@ public class ShipFoot : MonoBehaviour
     [SerializeField] private float _springRestDistance = 2f;
     [SerializeField] private float _springStrength = 128f;
     [SerializeField] private float _springDamper = 16f;
+    [SerializeField] Transform _footMesh;
     private void Awake()
     {
         if (!_rigidbody)
@@ -18,7 +19,7 @@ public class ShipFoot : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit , _springRestDistance * 1.25f))
+        if (Physics.Raycast(transform.position, -transform.up, out hit , _springRestDistance))
         {
             
             Vector3 tireWorldVelocity = _rigidbody.GetPointVelocity(transform.position);
@@ -27,6 +28,12 @@ public class ShipFoot : MonoBehaviour
             float force = (offset * _springStrength) - (velocity * _springDamper);
             _rigidbody.AddForceAtPosition(transform.up * force, transform.position);
             Debug.DrawRay(transform.position, hit.distance * -transform.up, Color.magenta, 0.2f);
+            _footMesh.localPosition = Vector3.down * hit.distance;
+
+        } else
+        {
+            _footMesh.localPosition = Vector3.down * _springRestDistance;
         }
+
     }
 }
