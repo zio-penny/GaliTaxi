@@ -111,8 +111,30 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0f34dfe4-89a9-4d0d-b3dd-f69dbf468165"",
+                    ""path"": ""<HID::Thrustmaster TWCS Throttle>/z"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": """",
+                    ""action"": ""MainThrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""26a0e493-90ac-4e55-9842-fdbf8ed960f0"",
                     ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27e146aa-81e7-4bf5-ab56-36246d889e1c"",
+                    ""path"": ""<HID::VKB-Sim © Alex Oz 2021  VKBsim Gladiator NXT R  >/rz"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

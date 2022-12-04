@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class Thruster : MonoBehaviour
+public class Propulsion : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidBody;
-    [SerializeField] private float _thrustPower = 256f;
-    [SerializeField] private ThrustArray _thrustArray;
+    [SerializeField] private float _maxThrustPower = 256f;
 
     public float Throttle = 0.0f;
 
@@ -17,7 +16,7 @@ public class Thruster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidBody.AddForceAtPosition(transform.up * _thrustPower * Throttle, transform.position);
+        _rigidBody.AddForceAtPosition(transform.up * _maxThrustPower * Throttle, transform.position);
 
     }
 }
