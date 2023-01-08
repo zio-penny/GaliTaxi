@@ -3,8 +3,10 @@ using UnityEngine;
 public class Propulsion : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidBody;
-    [SerializeField] private float _maxThrustPower = 256f;
+    [SerializeField] private float _mainThrustPower = 256f;
+    [SerializeField] private Transform[] _thrusters;
 
+    public float MaxThrustPower => _mainThrustPower;
     public float Throttle = 0.0f;
 
     private void Awake()
@@ -16,7 +18,9 @@ public class Propulsion : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidBody.AddForceAtPosition(transform.up * _maxThrustPower * Throttle, transform.position);
-
+        // get ground effect
+        // shoot ray down from each
+        _rigidBody.AddForce(transform.up * _mainThrustPower * Throttle);
+        
     }
 }
