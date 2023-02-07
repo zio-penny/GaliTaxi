@@ -4,10 +4,10 @@ public class Propulsion : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidBody;
     [SerializeField] private float _mainThrustPower = 256f;
-    [SerializeField] private Transform[] _thrusters;
+    [SerializeField] private float _throttle = 0.0f;
 
     public float MaxThrustPower => _mainThrustPower;
-    public float Throttle = 0.0f;
+    public float Throttle => _throttle;
 
     private void Awake()
     {
@@ -18,9 +18,15 @@ public class Propulsion : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // get ground effect
-        // shoot ray down from each
-        _rigidBody.AddForce(transform.up * _mainThrustPower * Throttle);
-        
+        if(_throttle > 0.0f)
+        {
+            _rigidBody.AddForceAtPosition(transform.up * _mainThrustPower * Throttle, transform.position);
+
+        }        
+    }
+
+    public void SetThrottle(float throttle)
+    {
+        _throttle = throttle;
     }
 }

@@ -33,7 +33,7 @@ public class Ship : MonoBehaviour, IFlightActions
 
     public void OnMainThrust(InputAction.CallbackContext context)
     {
-        _thruster.Throttle = context.ReadValue<float>();
+        _thruster.SetThrottle(context.ReadValue<float>());
     }
 
     public void OnPitch(InputAction.CallbackContext context)
