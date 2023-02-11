@@ -163,6 +163,17 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a102a921-08f7-4cde-b98f-c4733ed084dd"",
+                    ""path"": ""<HID::VKB-Sim © Alex Oz 2021  VKBsim Gladiator NXT R  >/stick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

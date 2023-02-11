@@ -2,19 +2,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static GaliTaxiInput;
 
-public class Ship : MonoBehaviour, IFlightActions
+public class ThrusterShip : MonoBehaviour, IFlightActions
 {
     [SerializeField] Propulsion _thruster;
+    [SerializeField] Propulsion _retroThruster;
+    [SerializeField] Propulsion _leftThruster;
+    [SerializeField] Propulsion _rightThruster;
+
     private GaliTaxiInput _input;
     
-    private void Awake()
-    {
-        if(!_thruster)
-        {
-            _thruster = GetComponentInChildren<Propulsion>();
-        }
-    }
-
     private void OnEnable()
     {
         if (_input == null)
@@ -33,7 +29,8 @@ public class Ship : MonoBehaviour, IFlightActions
 
     public void OnMainThrust(InputAction.CallbackContext context)
     {
-        _thruster.SetThrottle(context.ReadValue<float>());
+        _thruster.SetThrottle(Mathf.Max(context.ReadValue<float>(), 0.0f));
+        _retroThruster.SetThrottle(Mathf.Max(-context.ReadValue<float>(), 0.0f));
     }
 
     public void OnPitch(InputAction.CallbackContext context)
@@ -43,7 +40,8 @@ public class Ship : MonoBehaviour, IFlightActions
 
     public void OnRoll(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        _leftThruster.SetThrottle(Mathf.Max(-context.ReadValue<float>(), 0.0f));
+        _rightThruster.SetThrottle(Mathf.Max(context.ReadValue<float>(), 0.0f));
     }
 
     public void OnYaw(InputAction.CallbackContext context)
