@@ -55,4 +55,8 @@ public class ThrusterShip : MonoBehaviour, IFlightActions
         
     }
 
+    public void OnOverdrive(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }

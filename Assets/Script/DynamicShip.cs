@@ -14,6 +14,7 @@ public class DynamicShip : MonoBehaviour, IFlightActions
 
     private float _mainThrottle;
     private float _yawThrottle;
+    private float _overdriveThrottle;
 
     private void OnEnable()
     {
@@ -48,20 +49,21 @@ public class DynamicShip : MonoBehaviour, IFlightActions
     {
         if (_mainThrottle != 0.0f)
         {
-            Vector3 maxThrust = _mainThrottle > 0.0f ? 
-                transform.up * _shipStats.MainThrust: 
-                transform.up * _shipStats.RetroThrust;
-
-            _rigidBody.AddForce(maxThrust * _mainThrottle);
+            float thrust = _mainThrottle > 0.0f ? _shipStats.MainThrust : _shipStats.RetroThrust;
+            thrust *= _mainThrottle;
+            thrust *= 1 + (_shipStats.OverdriveMultiplier * _overdriveThrottle); 
+            _rigidBody.AddForce(transform.up * thrust);
         }
 
         if(_yawThrottle != 0.0f)
         {
-            _rigidBody.AddTorque(-transform.forward * _shipStats.RotationThrust * _yawThrottle);
+            float rotation = _shipStats.RotationThrust * _yawThrottle;
+            rotation *= 1 + (_shipStats.OverdriveMultiplier * _overdriveThrottle * 4);
+            _rigidBody.AddTorque(-transform.forward * rotation);
         }
     }
 
-    void UpdateRigidBody()
+    public void UpdateRigidBody()
     {
         _rigidBody.mass = _shipStats.Mass;
     }
@@ -84,5 +86,10 @@ public class DynamicShip : MonoBehaviour, IFlightActions
     public void OnYaw(InputAction.CallbackContext context)
     {
         _yawThrottle= context.ReadValue<float>();
+    }
+
+    public void OnOverdrive(InputAction.CallbackContext context)
+    {
+        _overdriveThrottle= context.ReadValue<float>();
     }
 }

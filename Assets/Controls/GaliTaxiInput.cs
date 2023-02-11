@@ -62,6 +62,15 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Overdrive"",
+                    ""type"": ""Button"",
+                    ""id"": ""f39cdf91-9621-4516-b57b-eabc36d7cb1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32cc0e57-8c93-454a-9e14-3b9700d31cb1"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Overdrive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -300,6 +320,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         m_Flight_Yaw = m_Flight.FindAction("Yaw", throwIfNotFound: true);
         m_Flight_Pitch = m_Flight.FindAction("Pitch", throwIfNotFound: true);
         m_Flight_Roll = m_Flight.FindAction("Roll", throwIfNotFound: true);
+        m_Flight_Overdrive = m_Flight.FindAction("Overdrive", throwIfNotFound: true);
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_Walk = m_Character.FindAction("Walk", throwIfNotFound: true);
@@ -367,6 +388,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Flight_Yaw;
     private readonly InputAction m_Flight_Pitch;
     private readonly InputAction m_Flight_Roll;
+    private readonly InputAction m_Flight_Overdrive;
     public struct FlightActions
     {
         private @GaliTaxiInput m_Wrapper;
@@ -375,6 +397,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         public InputAction @Yaw => m_Wrapper.m_Flight_Yaw;
         public InputAction @Pitch => m_Wrapper.m_Flight_Pitch;
         public InputAction @Roll => m_Wrapper.m_Flight_Roll;
+        public InputAction @Overdrive => m_Wrapper.m_Flight_Overdrive;
         public InputActionMap Get() { return m_Wrapper.m_Flight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,6 +419,9 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 @Roll.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
                 @Roll.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
                 @Roll.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
+                @Overdrive.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
+                @Overdrive.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
+                @Overdrive.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
             }
             m_Wrapper.m_FlightActionsCallbackInterface = instance;
             if (instance != null)
@@ -412,6 +438,9 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 @Roll.started += instance.OnRoll;
                 @Roll.performed += instance.OnRoll;
                 @Roll.canceled += instance.OnRoll;
+                @Overdrive.started += instance.OnOverdrive;
+                @Overdrive.performed += instance.OnOverdrive;
+                @Overdrive.canceled += instance.OnOverdrive;
             }
         }
     }
@@ -463,6 +492,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         void OnYaw(InputAction.CallbackContext context);
         void OnPitch(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
+        void OnOverdrive(InputAction.CallbackContext context);
     }
     public interface ICharacterActions
     {
