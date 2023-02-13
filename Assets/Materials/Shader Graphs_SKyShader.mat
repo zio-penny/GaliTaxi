@@ -52,6 +52,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _HorizonColor: {r: 1, g: 0.8337651, b: 0.6084906, a: 0}
+    - _HorizonColor: {r: 1, g: 0.8131745, b: 0.60784316, a: 0}
     - _Sky_Color: {r: 0.05188679, g: 0.98162, b: 1, a: 0}
   m_BuildTextureStacks: []
