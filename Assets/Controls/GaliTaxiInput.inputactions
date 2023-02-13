@@ -24,27 +24,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Pitch",
-                    "type": "Value",
-                    "id": "06df23cd-6de5-475c-84e0-8926fe91e213",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Roll",
-                    "type": "Value",
-                    "id": "8fd9990b-762b-476e-bed8-f1b31b2ec23d",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Overdrive",
                     "type": "Button",
                     "id": "f39cdf91-9621-4516-b57b-eabc36d7cb1e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FlipMode",
+                    "type": "Button",
+                    "id": "cadc1725-b3fb-4465-9220-c5812531a114",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Arm/Disarm",
+                    "type": "Button",
+                    "id": "04e5a412-4a52-46cc-92d6-3f991b26083b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -131,45 +131,34 @@
                 },
                 {
                     "name": "",
-                    "id": "bde5da1e-9c30-4fd9-80fa-4af02f7f45d2",
-                    "path": "<Gamepad>/rightStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pitch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5137c659-6fb0-4495-83f7-819abc18ceb1",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a102a921-08f7-4cde-b98f-c4733ed084dd",
-                    "path": "<HID::VKB-Sim © Alex Oz 2021  VKBsim Gladiator NXT R  >/stick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "32cc0e57-8c93-454a-9e14-3b9700d31cb1",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Overdrive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59ce522b-5823-43b0-aba0-49c004af862e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3f04d1a-154d-4b67-bceb-11383decf0c9",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Arm/Disarm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

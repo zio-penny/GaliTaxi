@@ -46,27 +46,27 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Pitch"",
-                    ""type"": ""Value"",
-                    ""id"": ""06df23cd-6de5-475c-84e0-8926fe91e213"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Roll"",
-                    ""type"": ""Value"",
-                    ""id"": ""8fd9990b-762b-476e-bed8-f1b31b2ec23d"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Overdrive"",
                     ""type"": ""Button"",
                     ""id"": ""f39cdf91-9621-4516-b57b-eabc36d7cb1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlipMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""cadc1725-b3fb-4465-9220-c5812531a114"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Arm/Disarm"",
+                    ""type"": ""Button"",
+                    ""id"": ""04e5a412-4a52-46cc-92d6-3f991b26083b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -153,45 +153,34 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bde5da1e-9c30-4fd9-80fa-4af02f7f45d2"",
-                    ""path"": ""<Gamepad>/rightStick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pitch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5137c659-6fb0-4495-83f7-819abc18ceb1"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a102a921-08f7-4cde-b98f-c4733ed084dd"",
-                    ""path"": ""<HID::VKB-Sim © Alex Oz 2021  VKBsim Gladiator NXT R  >/stick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""32cc0e57-8c93-454a-9e14-3b9700d31cb1"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Overdrive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59ce522b-5823-43b0-aba0-49c004af862e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3f04d1a-154d-4b67-bceb-11383decf0c9"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arm/Disarm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -318,9 +307,9 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         m_Flight = asset.FindActionMap("Flight", throwIfNotFound: true);
         m_Flight_MainThrust = m_Flight.FindAction("MainThrust", throwIfNotFound: true);
         m_Flight_Yaw = m_Flight.FindAction("Yaw", throwIfNotFound: true);
-        m_Flight_Pitch = m_Flight.FindAction("Pitch", throwIfNotFound: true);
-        m_Flight_Roll = m_Flight.FindAction("Roll", throwIfNotFound: true);
         m_Flight_Overdrive = m_Flight.FindAction("Overdrive", throwIfNotFound: true);
+        m_Flight_FlipMode = m_Flight.FindAction("FlipMode", throwIfNotFound: true);
+        m_Flight_ArmDisarm = m_Flight.FindAction("Arm/Disarm", throwIfNotFound: true);
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_Walk = m_Character.FindAction("Walk", throwIfNotFound: true);
@@ -386,18 +375,18 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
     private IFlightActions m_FlightActionsCallbackInterface;
     private readonly InputAction m_Flight_MainThrust;
     private readonly InputAction m_Flight_Yaw;
-    private readonly InputAction m_Flight_Pitch;
-    private readonly InputAction m_Flight_Roll;
     private readonly InputAction m_Flight_Overdrive;
+    private readonly InputAction m_Flight_FlipMode;
+    private readonly InputAction m_Flight_ArmDisarm;
     public struct FlightActions
     {
         private @GaliTaxiInput m_Wrapper;
         public FlightActions(@GaliTaxiInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MainThrust => m_Wrapper.m_Flight_MainThrust;
         public InputAction @Yaw => m_Wrapper.m_Flight_Yaw;
-        public InputAction @Pitch => m_Wrapper.m_Flight_Pitch;
-        public InputAction @Roll => m_Wrapper.m_Flight_Roll;
         public InputAction @Overdrive => m_Wrapper.m_Flight_Overdrive;
+        public InputAction @FlipMode => m_Wrapper.m_Flight_FlipMode;
+        public InputAction @ArmDisarm => m_Wrapper.m_Flight_ArmDisarm;
         public InputActionMap Get() { return m_Wrapper.m_Flight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,15 +402,15 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 @Yaw.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnYaw;
                 @Yaw.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnYaw;
                 @Yaw.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnYaw;
-                @Pitch.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnPitch;
-                @Pitch.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnPitch;
-                @Pitch.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnPitch;
-                @Roll.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
-                @Roll.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
-                @Roll.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnRoll;
                 @Overdrive.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
                 @Overdrive.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
                 @Overdrive.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnOverdrive;
+                @FlipMode.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnFlipMode;
+                @FlipMode.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnFlipMode;
+                @FlipMode.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnFlipMode;
+                @ArmDisarm.started -= m_Wrapper.m_FlightActionsCallbackInterface.OnArmDisarm;
+                @ArmDisarm.performed -= m_Wrapper.m_FlightActionsCallbackInterface.OnArmDisarm;
+                @ArmDisarm.canceled -= m_Wrapper.m_FlightActionsCallbackInterface.OnArmDisarm;
             }
             m_Wrapper.m_FlightActionsCallbackInterface = instance;
             if (instance != null)
@@ -432,15 +421,15 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 @Yaw.started += instance.OnYaw;
                 @Yaw.performed += instance.OnYaw;
                 @Yaw.canceled += instance.OnYaw;
-                @Pitch.started += instance.OnPitch;
-                @Pitch.performed += instance.OnPitch;
-                @Pitch.canceled += instance.OnPitch;
-                @Roll.started += instance.OnRoll;
-                @Roll.performed += instance.OnRoll;
-                @Roll.canceled += instance.OnRoll;
                 @Overdrive.started += instance.OnOverdrive;
                 @Overdrive.performed += instance.OnOverdrive;
                 @Overdrive.canceled += instance.OnOverdrive;
+                @FlipMode.started += instance.OnFlipMode;
+                @FlipMode.performed += instance.OnFlipMode;
+                @FlipMode.canceled += instance.OnFlipMode;
+                @ArmDisarm.started += instance.OnArmDisarm;
+                @ArmDisarm.performed += instance.OnArmDisarm;
+                @ArmDisarm.canceled += instance.OnArmDisarm;
             }
         }
     }
@@ -490,9 +479,9 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
     {
         void OnMainThrust(InputAction.CallbackContext context);
         void OnYaw(InputAction.CallbackContext context);
-        void OnPitch(InputAction.CallbackContext context);
-        void OnRoll(InputAction.CallbackContext context);
         void OnOverdrive(InputAction.CallbackContext context);
+        void OnFlipMode(InputAction.CallbackContext context);
+        void OnArmDisarm(InputAction.CallbackContext context);
     }
     public interface ICharacterActions
     {

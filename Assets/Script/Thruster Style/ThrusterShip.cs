@@ -59,4 +59,14 @@ public class ThrusterShip : MonoBehaviour, IFlightActions
     {
         throw new System.NotImplementedException();
     }
+
+    public void OnFlipMode(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnArmDisarm(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }
