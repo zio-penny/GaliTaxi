@@ -57,9 +57,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Contrast: 1
+    - _Horizon_Height: 0
+    - _Horizon_Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _HorizonColor: {r: 1, g: 0.8131745, b: 0.60784316, a: 0}
-    - _Sky_Color: {r: 1, g: 0.05098039, b: 0.9031183, a: 0}
+    - _HorizonColor: {r: 0.33262435, g: 0.08962265, b: 0.3584906, a: 0}
+    - _Sky_Color: {r: 0, g: 0.03493117, b: 0.7176471, a: 0}
   m_BuildTextureStacks: []

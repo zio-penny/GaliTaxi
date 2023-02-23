@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static GaliTaxiInput;
 
+/// <summary>
+/// 
+/// 
+/// 
+/// </summary>
+
 public class DynamicShip : MonoBehaviour, IFlightActions
 {
     private Rigidbody _rigidBody;
@@ -53,7 +59,7 @@ public class DynamicShip : MonoBehaviour, IFlightActions
         ProcessInput();
         ProcessPhysics();
 
-        Debug.Log(_rigidBody.angularVelocity);
+        //Debug.Log(_rigidBody.angularVelocity);
     }
 
 
