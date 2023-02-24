@@ -48,7 +48,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
     - _Distance: 27.48
+    - _Frequency: 8
+    - _Magnitude: 2
     - _Opacity: 0.299
     - _QueueControl: 0
     - _QueueOffset: 0
