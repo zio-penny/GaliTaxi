@@ -8,7 +8,7 @@ public class Environment : MonoBehaviour
 
     [SerializeField] private float _globalDrag = 0.0f;
     [SerializeField] private float _globalAngularDrag = 0.0f;
-
+    [SerializeField] private Vector3 _globalGravity = Vector3.down * 9.8f;
     public float Drag => _globalDrag;
     public float AngularDrag => _globalAngularDrag;
 
@@ -26,6 +26,12 @@ public class Environment : MonoBehaviour
         }
 
         _instance = this;
+    }
+
+    public void SetGravity(Vector3 newGravity)
+    {
+        _globalGravity = newGravity;
+        Physics.gravity = _globalGravity;
     }
 
     public void SetGlobalDrag(float drag, float angularDrag)

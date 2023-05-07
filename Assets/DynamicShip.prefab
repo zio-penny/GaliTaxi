@@ -343,7 +343,7 @@ MonoBehaviour:
   _retroOverdriveMultiplier: 1.5
   _torqueThrust: 2
   _MaxRotation: 16
-  _overdriveMultiplier: 4
+  _overdriveMultiplier: 2
   _forwardDragMultiplier: 1
   _sideDragMultiplier: 4
   _backDragMultiplier: 1.5

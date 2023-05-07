@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GaliTaxi2D.unity
+    path: Assets/Scripts/z_old/GaliTaxi2D.unity
     guid: b2b78c50e092b844e92500a2d66a920c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
