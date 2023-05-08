@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static GaliTaxiInput;
 
-public class LanderLocomotion : MonoBehaviour, IFlightActions
+public class LanderLocomotion : MonoBehaviour
 {
     [SerializeField] Rigidbody _body;
 
-    public float MainPower = 16f;
-    public float StrafePower = 8f;
+    [SerializeField] float _mainPower = 48f;
+    [SerializeField] float _strafePower = 32f;
 
     public float UprightStrength = 8.0f;
-    public float UprightDamper = 0.1f;
-    [SerializeField] LanderPlayerController _input;
+    public float UprightDamper = 2f;
+    [SerializeField] LanderInput _input;
 
     
     private void Awake()
@@ -23,13 +21,13 @@ public class LanderLocomotion : MonoBehaviour, IFlightActions
 
         if(_input == null)
         {
-            _input= GetComponent<LanderPlayerController>();
+            _input= GetComponent<LanderInput>();
         }
     }
 
     private void FixedUpdate()
     {
-        _body.AddForce(_input.MainThrottle * MainPower * Vector3.up + _input.StrafeThrottle * StrafePower * Vector3.right);
+        _body.AddForce(_input.MainThrottle * _mainPower * Vector3.up + _input.StrafeThrottle * _strafePower * Vector3.right);
         UpdateUprightForce();
     }
 
@@ -47,51 +45,17 @@ public class LanderLocomotion : MonoBehaviour, IFlightActions
 
         _body.AddTorque((rotationAxis * (rotationRadians * UprightStrength)) - (_body.angularVelocity * UprightDamper));
     }
-
+    
     public static Quaternion ShortestRotation(Quaternion a, Quaternion b)
     {
-
         if (Quaternion.Dot(a, b) < 0)
-
         {
-
             return a * Quaternion.Inverse(Multiply(b, -1));
-
         }
-
         else return a * Quaternion.Inverse(b);
-
     }
     public static Quaternion Multiply(Quaternion input, float scalar)
-
     {
-
         return new Quaternion(input.x * scalar, input.y * scalar, input.z * scalar, input.w * scalar);
-
-    }
-
-    public void OnMainThrust(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnYaw(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnOverdrive(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnFlipMode(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnArmDisarm(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
     }
 }

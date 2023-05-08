@@ -18546,11 +18546,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lander
       objectReference: {fileID: 0}
-    - target: {fileID: 8468959682395422019, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: UprightDamper
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 9147566210725152955, guid: bf9632f151fc62a44880b8022fa2fdf1,
         type: 3}
       propertyPath: m_RootOrder

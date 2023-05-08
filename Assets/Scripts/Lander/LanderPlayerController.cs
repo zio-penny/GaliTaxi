@@ -5,8 +5,8 @@ using static GaliTaxiInput;
 public class LanderPlayerController : LanderInput, IFlightActions
 {
     GaliTaxiInput _input;
-    [SerializeField] float _main = 0f;
-    [SerializeField] float _strafe = 0f;
+    float _main = 0f;
+    float _strafe = 0f;
     override public float MainThrottle => _main;
     override public float StrafeThrottle => _strafe;
 
