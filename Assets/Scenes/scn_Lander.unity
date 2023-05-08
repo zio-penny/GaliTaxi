@@ -18153,7 +18153,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31868
+  m_Name: pb_Mesh26724
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18546,25 +18546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lander
       objectReference: {fileID: 0}
-    - target: {fileID: 5490605430757306788, guid: bf9632f151fc62a44880b8022fa2fdf1,
+    - target: {fileID: 8468959682395422019, guid: bf9632f151fc62a44880b8022fa2fdf1,
         type: 3}
-      propertyPath: m_NotificationBehavior
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5490605430757306788, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7147297843512862472, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468959682395422018, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 8
+      propertyPath: UprightDamper
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 9147566210725152955, guid: bf9632f151fc62a44880b8022fa2fdf1,
         type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9147566210725152955}
   - component: {fileID: 8468959682395422018}
   - component: {fileID: 8468959682395422019}
-  - component: {fileID: 5490605430757306788}
+  - component: {fileID: 4819578575919489300}
   m_Layer: 0
   m_Name: LanderPawn
   m_TagString: Untagged
@@ -49,7 +49,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!114 &8468959682395422019
 MonoBehaviour:
@@ -63,8 +63,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b34d0191b8c46970446e2049242c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _body: {fileID: 0}
---- !u!114 &5490605430757306788
+  _body: {fileID: 8468959682395422018}
+  MainPower: 16
+  StrafePower: 8
+  UprightStrength: 4
+  UprightDamper: 0.1
+  _input: {fileID: 4819578575919489300}
+--- !u!114 &4819578575919489300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,68 +78,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2931542254907501544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: b25f6004ca3c65848a3a412601601ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0adf7764683cf57439f2048818fa57f1,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bf78e3ae-df77-4aa1-9364-24dcd7c7b4db
-    m_ActionName: Flight/MainThrust[/Keyboard/s,/Keyboard/w]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8468959682395422019}
-        m_TargetAssemblyTypeName: LanderLocomotion, Assembly-CSharp
-        m_MethodName: OnThrottle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a7dfa19c-c90e-41f3-bb10-240ec19a6c9c
-    m_ActionName: Flight/Yaw
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f39cdf91-9621-4516-b57b-eabc36d7cb1e
-    m_ActionName: Flight/Overdrive
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cadc1725-b3fb-4465-9220-c5812531a114
-    m_ActionName: Flight/FlipMode
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 04e5a412-4a52-46cc-92d6-3f991b26083b
-    m_ActionName: Flight/Arm/Disarm
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f8504971-04a3-4769-a56e-3d96f2841448
-    m_ActionName: Character/Walk[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9807cd70-650b-4694-bf9e-3dd835336fcb
-    m_ActionName: Character/Jump[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Flight
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _main: 0
+  _strafe: 0
 --- !u!1 &7648132477706402096
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7648132477706402096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.615, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

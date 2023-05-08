@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scripts/z_old/GaliTaxi2D.unity
     guid: b2b78c50e092b844e92500a2d66a920c
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
+    com.unity.input.settings: {fileID: 11400000, guid: f04842742d239454ca7a81679f645170,
       type: 2}
