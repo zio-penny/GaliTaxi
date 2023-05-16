@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &501808123214441588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5122195034506210595}
+  - component: {fileID: 9150077837955494263}
+  m_Layer: 0
+  m_Name: LanderStruts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5122195034506210595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501808123214441588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9147566210725152955}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9150077837955494263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501808123214441588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56778b975de1d449bcb334cf9c1ea7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _strutEnabled: 0
+  _strutHeight: 1
+  _strutWidth: 0.5
+  _strutStrength: 8
+  _strutDamper: 1
+  _parentRB: {fileID: 0}
 --- !u!1 &2931542254907501544
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,9 +62,10 @@ GameObject:
   - component: {fileID: 8468959682395422018}
   - component: {fileID: 8468959682395422019}
   - component: {fileID: 4819578575919489300}
+  - component: {fileID: 2126408662251819447}
   m_Layer: 0
   m_Name: LanderPawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +83,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7147297843512862472}
+  - {fileID: 5122195034506210595}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 8468959682395422018}
-  MainPower: 48
-  StrafePower: 32
+  _mainPower: 48
+  _strafePower: 32
   UprightStrength: 8
   UprightDamper: 2
   _input: {fileID: 4819578575919489300}
@@ -81,8 +133,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25f6004ca3c65848a3a412601601ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _main: 0
-  _strafe: 0
+--- !u!114 &2126408662251819447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931542254907501544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ed7726e3996544be34c24376ed6f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7648132477706402096
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +158,8 @@ GameObject:
   - component: {fileID: 6806009812762048188}
   - component: {fileID: 9181836845740487564}
   m_Layer: 0
-  m_Name: collider
-  m_TagString: Untagged
+  m_Name: LanderBody
+  m_TagString: LanderBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
