@@ -131,7 +131,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-42664
+  m_Name: pb_Mesh27716
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -516,7 +516,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27666
+  m_Name: pb_Mesh27674
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _padID: 0
+  _playerLanded: 0
 --- !u!1 &1160234425
 GameObject:
   m_ObjectHideFlags: 0
@@ -18534,6 +18535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _padID: 0
+  _playerLanded: 0
 --- !u!64 &1348600231
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18541,7 +18543,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348600228}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad749de4fdfb8004685367da5a8c5e46, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -19079,11 +19081,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lander
       objectReference: {fileID: 0}
-    - target: {fileID: 5122195034506210595, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.23
-      objectReference: {fileID: 0}
     - target: {fileID: 9147566210725152955, guid: bf9632f151fc62a44880b8022fa2fdf1,
         type: 3}
       propertyPath: m_RootOrder
@@ -19138,31 +19135,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150077837955494263, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: _strutWidth
-      value: 0.333
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150077837955494263, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: _strutDamper
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150077837955494263, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: _strutHeight
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150077837955494263, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: _strutEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150077837955494263, guid: bf9632f151fc62a44880b8022fa2fdf1,
-        type: 3}
-      propertyPath: _strutStrength
-      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf9632f151fc62a44880b8022fa2fdf1, type: 3}

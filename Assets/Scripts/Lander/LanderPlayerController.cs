@@ -5,8 +5,11 @@ using static GaliTaxiInput;
 public class LanderPlayerController : LanderInput, IFlightActions
 {
     GaliTaxiInput _input;
+    LanderBehaviour _landerStruts;
+
     float _main = 0f;
     float _strafe = 0f;
+    
     override public float MainThrottle => _main;
     override public float StrafeThrottle => _strafe;
 
@@ -19,18 +22,27 @@ public class LanderPlayerController : LanderInput, IFlightActions
         }
 
         _input.Flight.Enable();
+
+        //if(_landerStruts == null)
+        //{
+        //    _landerStruts = GetComponentInChildren<LanderStruts>();
+        //}
     }
 
     private void OnDisable()
     {
         _input.Flight.Disable();
-
     }
 
 
     public void OnArmDisarm(InputAction.CallbackContext context)
     {
-        //throw new System.NotImplementedException();
+        switch(context.phase)
+        {
+            case InputActionPhase.Performed:
+                //_landerStruts.ToggleStruts();
+                break;
+        }
     }
 
     public void OnFlipMode(InputAction.CallbackContext context)
