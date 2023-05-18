@@ -5,7 +5,7 @@ using static GaliTaxiInput;
 public class LanderPlayerController : LanderInput, IFlightActions
 {
     GaliTaxiInput _input;
-    LanderBehaviour _landerStruts;
+    [SerializeField] LanderStruts _struts;
 
     float _main = 0f;
     float _strafe = 0f;
@@ -23,10 +23,10 @@ public class LanderPlayerController : LanderInput, IFlightActions
 
         _input.Flight.Enable();
 
-        //if(_landerStruts == null)
-        //{
-        //    _landerStruts = GetComponentInChildren<LanderStruts>();
-        //}
+        if (_struts == null)
+        {
+            _struts = GetComponentInChildren<LanderStruts>();
+        }
     }
 
     private void OnDisable()
@@ -40,7 +40,7 @@ public class LanderPlayerController : LanderInput, IFlightActions
         switch(context.phase)
         {
             case InputActionPhase.Performed:
-                //_landerStruts.ToggleStruts();
+                _struts.ToggleStruts();
                 break;
         }
     }

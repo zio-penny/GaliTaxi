@@ -3,12 +3,37 @@ using UnityEngine;
 
 public class LanderBehaviour : MonoBehaviour
 {
-    [SerializeField] LanderStruts _struts;
+    [SerializeField] float _maxHullPoints = 128f;
+    float _hullPoints = 128f;
 
+    Rigidbody _rigidBody;
+
+    private void Awake()
+    {
+        if(_rigidBody == null)
+        {
+            _rigidBody = GetComponent<Rigidbody>();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"Collision Velocity: {collision.relativeVelocity}");
-        Debug.Log($"Collision magnitude: {collision.relativeVelocity.magnitude}");
+        AddHullPoints(-1 * collision.relativeVelocity.magnitude * _rigidBody.mass);
+        Debug.Log($"Collision Damage: {collision.relativeVelocity.magnitude * _rigidBody.mass}");
+        Debug.Log($"Remaining Hull: {_hullPoints}");
+    }
+
+    public void AddHullPoints(float amount)
+    {
+        _hullPoints = _hullPoints + amount > _maxHullPoints ? _maxHullPoints : _hullPoints + amount;
+        if(_hullPoints < 0f)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

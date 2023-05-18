@@ -13,6 +13,10 @@ public class LanderStruts : MonoBehaviour
     [SerializeField, Range(0.0f, 1.0f)] private float _strutGrip = 0.6f;
     [SerializeField] private float _strutMass = 16f;
     [SerializeField] Rigidbody _parentRB;
+    [SerializeField] GameObject _footPrefab;
+
+    GameObject _leftFoot;
+    GameObject _rightFoot;
 
     public Vector3 LeftStrutOrigin => transform.position + (-transform.right * _strutWidth);
     public Vector3 RightStrutOrigin => transform.position + (transform.right * _strutWidth);
@@ -22,6 +26,11 @@ public class LanderStruts : MonoBehaviour
         if(_parentRB == null) { 
             _parentRB = GetComponentInParent<Rigidbody>();
         }
+
+        _leftFoot = Instantiate(_footPrefab, transform);
+        _leftFoot.SetActive(_strutEnabled);
+        _rightFoot = Instantiate(_footPrefab, transform);
+        _rightFoot.SetActive(_strutEnabled);
     }
     private void FixedUpdate()
     {
@@ -41,7 +50,10 @@ public class LanderStruts : MonoBehaviour
                 float xVelocity = worldVelocity.x;
                 float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
                 _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, LeftStrutOrigin);
-
+                _leftFoot.transform.position = leftHit.point;
+            } else
+            {
+                _leftFoot.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
             }
 
             if (Physics.Raycast(RightStrutOrigin, -transform.up, out rightHit, _strutHeight))
@@ -55,7 +67,10 @@ public class LanderStruts : MonoBehaviour
                 float xVelocity = worldVelocity.x;
                 float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
                 _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, RightStrutOrigin);
-
+                _rightFoot.transform.position = rightHit.point;
+            } else
+            {
+                _rightFoot.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);
             }
         }
     }
@@ -69,8 +84,8 @@ public class LanderStruts : MonoBehaviour
         {
             Gizmos.color = Color.red;
         }
-            Gizmos.DrawLine(LeftStrutOrigin, LeftStrutOrigin + (Vector3.down * _strutHeight));
-            Gizmos.DrawLine(RightStrutOrigin, RightStrutOrigin + (Vector3.down * _strutHeight));
+            Gizmos.DrawLine(LeftStrutOrigin, LeftStrutOrigin + (-transform.up * _strutHeight));
+            Gizmos.DrawLine(RightStrutOrigin, RightStrutOrigin + (-transform.up * _strutHeight));
     }
 
     public void ToggleStruts()
@@ -81,5 +96,7 @@ public class LanderStruts : MonoBehaviour
     public void SetStruts(bool isOn)
     {
         _strutEnabled = isOn;
+        _leftFoot.SetActive(isOn);
+        _rightFoot.SetActive(isOn);
     }
 }
