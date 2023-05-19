@@ -124,7 +124,6 @@ MonoBehaviour:
   _strafePower: 32
   UprightStrength: 8
   UprightDamper: 2
-  _input: {fileID: 4819578575919489300}
 --- !u!114 &4819578575919489300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25f6004ca3c65848a3a412601601ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _struts: {fileID: 0}
+  _struts: {fileID: 9150077837955494263}
 --- !u!114 &2126408662251819447
 MonoBehaviour:
   m_ObjectHideFlags: 0

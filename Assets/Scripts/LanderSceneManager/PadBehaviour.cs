@@ -4,6 +4,8 @@ using UnityEngine;
 public class PadBehaviour : MonoBehaviour
 {
     [SerializeField] Vector3 _passengerSpawn = new Vector3(0,0.5f, -0.75f);
+    [SerializeField] Color _gizmoColor = new Color(186 / 255f, 218 / 255f, 85 / 255f);
+    
     List<LanderBehaviour> _landers = new List<LanderBehaviour>();
     public List<LanderBehaviour> Landers => _landers;
 
@@ -28,7 +30,7 @@ public class PadBehaviour : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = _gizmoColor;
         Gizmos.DrawSphere(transform.position + _passengerSpawn, 0.2f);
     }
 }

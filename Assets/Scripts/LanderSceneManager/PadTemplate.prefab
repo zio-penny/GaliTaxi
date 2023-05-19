@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5106861558675990399}
   - component: {fileID: 5106861558675990341}
   m_Layer: 0
-  m_Name: Pad
+  m_Name: PadTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,4 +357,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ecde507571367840804d71cb8a185be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _passengerSpawn: {x: 0, y: 0.5, z: -0.75}
+  _passengerSpawn: {x: 0, y: 0.5, z: 0}
