@@ -9,7 +9,7 @@ public class LanderLocomotion : MonoBehaviour
 
     public float UprightStrength = 8.0f;
     public float UprightDamper = 2f;
-    [SerializeField] LanderInput _input;
+    [SerializeField] ILanderInput _input;
 
     
     private void Awake()
@@ -21,13 +21,13 @@ public class LanderLocomotion : MonoBehaviour
 
         if(_input == null)
         {
-            _input= GetComponent<LanderInput>();
+            _input= GetComponent<ILanderInput>();
         }
     }
 
     private void FixedUpdate()
     {
-        _body.AddForce(_input.MainThrottle * _mainPower * Vector3.up + _input.StrafeThrottle * _strafePower * Vector3.right);
+        _body.AddForce(_input.MainThrottle * _mainPower * transform.up + _input.StrafeThrottle * _strafePower * transform.right);
         UpdateUprightForce();
     }
 

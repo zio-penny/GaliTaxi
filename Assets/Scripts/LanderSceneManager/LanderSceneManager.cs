@@ -21,9 +21,4 @@ public class LanderSceneManager : MonoBehaviour
     {
         _planet = planet;
     }
-
-    private void CheckPad(PadBehaviour pad)
-    {
-        Debug.Log($"Player Touched {pad.name}");
-    }
 }

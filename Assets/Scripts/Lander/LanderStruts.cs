@@ -15,6 +15,8 @@ public class LanderStruts : MonoBehaviour
     [SerializeField] Rigidbody _parentRB;
     [SerializeField] GameObject _footPrefab;
 
+    ILanderInput _input;
+
     LanderBehaviour _parentLander;
     PadBehaviour _currentPad = null;
     bool _isDocked = false;
@@ -25,10 +27,25 @@ public class LanderStruts : MonoBehaviour
     public Vector3 LeftStrutOrigin => transform.position + (-transform.right * _strutWidth);
     public Vector3 RightStrutOrigin => transform.position + (transform.right * _strutWidth);
 
-    private void Start()
-    {   _parentRB = GetComponentInParent<Rigidbody>();
+    private void Awake()
+    {
+        _parentRB = GetComponentInParent<Rigidbody>();
         _parentLander = _parentRB.GetComponent<LanderBehaviour>();
+        _input = GetComponentInParent<ILanderInput>();
+    }
 
+    private void OnEnable()
+    {
+        _input.OnStrutToggle += ToggleStruts;
+    }
+
+    private void OnDisable()
+    {
+        _input.OnStrutToggle -= ToggleStruts;
+    }
+
+    private void Start()
+    {   
         _leftFootVisual = Instantiate(_footPrefab, transform);
         _leftFootVisual.SetActive(_strutEnabled);
         _rightFootVisual = Instantiate(_footPrefab, transform);
@@ -115,7 +132,7 @@ public class LanderStruts : MonoBehaviour
             Gizmos.DrawLine(RightStrutOrigin, RightStrutOrigin + (-transform.up * _strutHeight));
     }
 
-    public void ToggleStruts()
+    void ToggleStruts()
     {
         SetStruts(!_strutEnabled);
     }

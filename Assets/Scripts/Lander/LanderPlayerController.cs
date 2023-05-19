@@ -2,16 +2,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static GaliTaxiInput;
 
-public class LanderPlayerController : LanderInput, IFlightActions
+public class LanderPlayerController : MonoBehaviour, ILanderInput, IFlightActions
 {
     GaliTaxiInput _input;
     [SerializeField] LanderStruts _struts;
 
-    float _main = 0f;
-    float _strafe = 0f;
-    
-    override public float MainThrottle => _main;
-    override public float StrafeThrottle => _strafe;
+    float _mainThrottle = 0f;
+    public float MainThrottle => _mainThrottle;
+
+    float _strafeThrottle = 0f;
+    public float StrafeThrottle => _strafeThrottle;
+
+    public event StrutNotify OnStrutToggle;
 
     private void OnEnable()
     {
@@ -21,12 +23,12 @@ public class LanderPlayerController : LanderInput, IFlightActions
             _input.Flight.SetCallbacks(this);
         }
 
-        _input.Flight.Enable();
-
         if (_struts == null)
         {
             _struts = GetComponentInChildren<LanderStruts>();
         }
+
+        _input.Flight.Enable();
     }
 
     private void OnDisable()
@@ -40,7 +42,7 @@ public class LanderPlayerController : LanderInput, IFlightActions
         switch(context.phase)
         {
             case InputActionPhase.Performed:
-                _struts.ToggleStruts();
+                OnStrutToggle?.Invoke();
                 break;
         }
     }
@@ -57,10 +59,8 @@ public class LanderPlayerController : LanderInput, IFlightActions
         {
             case InputActionPhase.Started:
             case InputActionPhase.Performed:
-                _main = context.ReadValue<float>();
-                break;
             case InputActionPhase.Canceled:
-                _main = 0.0f;
+                _mainThrottle = context.ReadValue<float>();
                 break;
         }
     }
@@ -76,10 +76,8 @@ public class LanderPlayerController : LanderInput, IFlightActions
         {
             case InputActionPhase.Started:
             case InputActionPhase.Performed:
-                _strafe = context.ReadValue<float>();
-                break;
             case InputActionPhase.Canceled:
-                _strafe = 0.0f;
+                _strafeThrottle = context.ReadValue<float>();
                 break;
         }
     }
