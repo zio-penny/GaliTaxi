@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 129144070933749301}
   - component: {fileID: 6480928175777250516}
   - component: {fileID: 8351463207523670261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 997
+  m_VersionIndex: 1003
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -15,22 +15,24 @@ public class LanderStruts : MonoBehaviour
     [SerializeField] Rigidbody _parentRB;
     [SerializeField] GameObject _footPrefab;
 
-    GameObject _leftFoot;
-    GameObject _rightFoot;
+    LanderBehaviour _parentLander;
+    PadBehaviour _currentPad = null;
+    bool _isDocked = false;
+
+    GameObject _leftFootVisual;
+    GameObject _rightFootVisual;
 
     public Vector3 LeftStrutOrigin => transform.position + (-transform.right * _strutWidth);
     public Vector3 RightStrutOrigin => transform.position + (transform.right * _strutWidth);
 
     private void Start()
-    {
-        if(_parentRB == null) { 
-            _parentRB = GetComponentInParent<Rigidbody>();
-        }
+    {   _parentRB = GetComponentInParent<Rigidbody>();
+        _parentLander = _parentRB.GetComponent<LanderBehaviour>();
 
-        _leftFoot = Instantiate(_footPrefab, transform);
-        _leftFoot.SetActive(_strutEnabled);
-        _rightFoot = Instantiate(_footPrefab, transform);
-        _rightFoot.SetActive(_strutEnabled);
+        _leftFootVisual = Instantiate(_footPrefab, transform);
+        _leftFootVisual.SetActive(_strutEnabled);
+        _rightFootVisual = Instantiate(_footPrefab, transform);
+        _rightFootVisual.SetActive(_strutEnabled);
     }
     private void FixedUpdate()
     {
@@ -39,8 +41,13 @@ public class LanderStruts : MonoBehaviour
             RaycastHit leftHit;
             RaycastHit rightHit;
 
+            PadBehaviour leftPad = null;
+            PadBehaviour rightPad = null;
+            
             if(Physics.Raycast(LeftStrutOrigin, -transform.up, out leftHit, _strutHeight))
             {
+                leftPad = leftHit.collider.gameObject.GetComponent<PadBehaviour>();
+
                 Vector3 worldVelocity = _parentRB.GetPointVelocity(LeftStrutOrigin);
                 float offset = _strutHeight - leftHit.distance;
                 float velocity = Vector3.Dot(transform.up, worldVelocity);
@@ -50,14 +57,16 @@ public class LanderStruts : MonoBehaviour
                 float xVelocity = worldVelocity.x;
                 float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
                 _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, LeftStrutOrigin);
-                _leftFoot.transform.position = leftHit.point;
+                _leftFootVisual.transform.position = leftHit.point;
             } else
             {
-                _leftFoot.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
+                _leftFootVisual.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
             }
 
             if (Physics.Raycast(RightStrutOrigin, -transform.up, out rightHit, _strutHeight))
             {
+                rightPad = rightHit.collider.gameObject.GetComponent<PadBehaviour>();
+
                 Vector3 worldVelocity = _parentRB.GetPointVelocity(RightStrutOrigin);
                 float offset = _strutHeight - rightHit.distance;
                 float velocity = Vector3.Dot(transform.up, worldVelocity);
@@ -67,10 +76,28 @@ public class LanderStruts : MonoBehaviour
                 float xVelocity = worldVelocity.x;
                 float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
                 _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, RightStrutOrigin);
-                _rightFoot.transform.position = rightHit.point;
+                _rightFootVisual.transform.position = rightHit.point;
             } else
             {
-                _rightFoot.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);
+                _rightFootVisual.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);
+            }
+
+            if(leftPad && rightPad)
+            {
+                if(leftPad == rightPad && _parentRB.velocity.magnitude < 0.01f && !_isDocked)
+                {
+                    _currentPad = rightPad;
+                    _currentPad.Dock(_parentLander);
+                    _isDocked = true;
+                }
+            } else
+            {
+                if(_currentPad)
+                {
+                    _currentPad.Undock(_parentLander);
+                    _currentPad = null;
+                }
+                _isDocked = false;
             }
         }
     }
@@ -96,7 +123,7 @@ public class LanderStruts : MonoBehaviour
     public void SetStruts(bool isOn)
     {
         _strutEnabled = isOn;
-        _leftFoot.SetActive(isOn);
-        _rightFoot.SetActive(isOn);
+        _leftFootVisual.SetActive(isOn);
+        _rightFootVisual.SetActive(isOn);
     }
 }
