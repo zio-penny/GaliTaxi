@@ -5,6 +5,7 @@ public class LanderStruts : MonoBehaviour
     [SerializeField] private bool _strutEnabled = false;
 
     [SerializeField] private float _strutHeight = 1.0f;
+    [SerializeField] private float _strutSensor = .2f;
     [SerializeField] private float _strutWidth = 0.5f;
 
     [SerializeField] private float _strutStrength = 8f;
@@ -61,7 +62,7 @@ public class LanderStruts : MonoBehaviour
             PadBehaviour leftPad = null;
             PadBehaviour rightPad = null;
             
-            if(Physics.Raycast(LeftStrutOrigin, -transform.up, out leftHit, _strutHeight))
+            if(Physics.Raycast(LeftStrutOrigin, -transform.up, out leftHit, _strutHeight + _strutSensor))
             {
                 leftPad = leftHit.collider.gameObject.GetComponent<PadBehaviour>();
 
@@ -80,7 +81,7 @@ public class LanderStruts : MonoBehaviour
                 _leftFootVisual.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
             }
 
-            if (Physics.Raycast(RightStrutOrigin, -transform.up, out rightHit, _strutHeight))
+            if (Physics.Raycast(RightStrutOrigin, -transform.up, out rightHit, _strutHeight + _strutSensor))
             {
                 rightPad = rightHit.collider.gameObject.GetComponent<PadBehaviour>();
 
@@ -128,8 +129,13 @@ public class LanderStruts : MonoBehaviour
         {
             Gizmos.color = Color.red;
         }
-            Gizmos.DrawLine(LeftStrutOrigin, LeftStrutOrigin + (-transform.up * _strutHeight));
-            Gizmos.DrawLine(RightStrutOrigin, RightStrutOrigin + (-transform.up * _strutHeight));
+
+        Gizmos.DrawLine(LeftStrutOrigin, LeftStrutOrigin + (-transform.up * _strutHeight));
+        Gizmos.DrawLine(RightStrutOrigin, RightStrutOrigin + (-transform.up * _strutHeight));
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(LeftStrutOrigin + (-transform.up * _strutHeight), LeftStrutOrigin + (-transform.up * (_strutHeight + _strutSensor)));
+        Gizmos.DrawLine(RightStrutOrigin + (-transform.up * _strutHeight), RightStrutOrigin + (-transform.up * (_strutHeight + _strutSensor)));
     }
 
     void ToggleStruts()

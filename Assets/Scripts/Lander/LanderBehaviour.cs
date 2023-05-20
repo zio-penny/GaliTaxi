@@ -6,7 +6,7 @@ public class LanderBehaviour : MonoBehaviour
     float _hullPoints = 128f;
 
     Rigidbody _rigidBody;
-
+    
     private void Awake()
     {
         if(_rigidBody == null)
@@ -33,6 +33,7 @@ public class LanderBehaviour : MonoBehaviour
 
     public void Die()
     {
+        AudioManager.Instance.PlayDeathSound();
         Destroy(gameObject);
     }
 }
