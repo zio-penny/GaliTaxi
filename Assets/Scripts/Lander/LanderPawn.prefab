@@ -168,10 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 8468959682395422018}
   _isUprighting: 1
-  UprightStrength: 16
-  UprightDamper: 2
+  UprightStrength: 32
+  UprightDamper: 8
   _mainPower: 256
-  _strafePower: 32
+  _strafePower: 64
 --- !u!114 &4819578575919489300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083ed7726e3996544be34c24376ed6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHullPoints: 128
+  _maxHullPoints: 256
 --- !u!1 &5008179899294640136
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 426
+  m_VersionIndex: 440
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 523
+  m_UnmodifiedMeshVersion: 440
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1.5, y: 0.625, z: 1}

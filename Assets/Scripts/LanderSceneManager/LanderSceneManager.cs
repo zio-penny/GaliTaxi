@@ -7,6 +7,8 @@ public class LanderSceneManager : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] List<PadBehaviour> _pads;
 
+    [SerializeField] LanderController _currentPawn;
+
     private void Start()
     {
         Init();
@@ -21,4 +23,6 @@ public class LanderSceneManager : MonoBehaviour
     {
         _planet = planet;
     }
+
+    public SetPawn(Player)
 }

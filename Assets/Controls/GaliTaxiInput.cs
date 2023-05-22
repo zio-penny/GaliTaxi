@@ -220,11 +220,11 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Character"",
+            ""name"": ""Humanoid"",
             ""id"": ""3d836d20-6c8e-4a1a-92bf-fc9eb017938d"",
             ""actions"": [
                 {
-                    ""name"": ""Walk"",
+                    ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""f8504971-04a3-4769-a56e-3d96f2841448"",
                     ""expectedControlType"": ""Vector2"",
@@ -233,9 +233,18 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""444a9863-b935-4b4c-b7d7-d218e1195413"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""9807cd70-650b-4694-bf9e-3dd835336fcb"",
+                    ""id"": ""fb6913bd-3f70-41d5-ba04-605631acf154"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -250,7 +259,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -261,7 +270,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -272,7 +281,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -283,7 +292,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -294,7 +303,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -305,13 +314,35 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fbf75bc6-de55-488d-a948-ef8da25b09cd"",
+                    ""id"": ""d6f2b633-83b7-4e45-adc9-4df7eed3e2f0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69559379-33b5-4050-9cf9-08af9cad0b4c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b2b3580-0693-4b6d-9060-f5cb77f3512b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -322,7 +353,7 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6c940417-0bac-40c2-9da4-1f43351b7379"",
+                    ""id"": ""8b08ae50-70ee-475f-a684-3317600506f0"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -343,10 +374,11 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         m_Flight_Overdrive = m_Flight.FindAction("Overdrive", throwIfNotFound: true);
         m_Flight_FlipMode = m_Flight.FindAction("FlipMode", throwIfNotFound: true);
         m_Flight_ArmDisarm = m_Flight.FindAction("Arm/Disarm", throwIfNotFound: true);
-        // Character
-        m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
-        m_Character_Walk = m_Character.FindAction("Walk", throwIfNotFound: true);
-        m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
+        // Humanoid
+        m_Humanoid = asset.FindActionMap("Humanoid", throwIfNotFound: true);
+        m_Humanoid_Move = m_Humanoid.FindAction("Move", throwIfNotFound: true);
+        m_Humanoid_Interact = m_Humanoid.FindAction("Interact", throwIfNotFound: true);
+        m_Humanoid_Jump = m_Humanoid.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -468,46 +500,54 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
     }
     public FlightActions @Flight => new FlightActions(this);
 
-    // Character
-    private readonly InputActionMap m_Character;
-    private ICharacterActions m_CharacterActionsCallbackInterface;
-    private readonly InputAction m_Character_Walk;
-    private readonly InputAction m_Character_Jump;
-    public struct CharacterActions
+    // Humanoid
+    private readonly InputActionMap m_Humanoid;
+    private IHumanoidActions m_HumanoidActionsCallbackInterface;
+    private readonly InputAction m_Humanoid_Move;
+    private readonly InputAction m_Humanoid_Interact;
+    private readonly InputAction m_Humanoid_Jump;
+    public struct HumanoidActions
     {
         private @GaliTaxiInput m_Wrapper;
-        public CharacterActions(@GaliTaxiInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Walk => m_Wrapper.m_Character_Walk;
-        public InputAction @Jump => m_Wrapper.m_Character_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_Character; }
+        public HumanoidActions(@GaliTaxiInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Humanoid_Move;
+        public InputAction @Interact => m_Wrapper.m_Humanoid_Interact;
+        public InputAction @Jump => m_Wrapper.m_Humanoid_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_Humanoid; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
-        public void SetCallbacks(ICharacterActions instance)
+        public static implicit operator InputActionMap(HumanoidActions set) { return set.Get(); }
+        public void SetCallbacks(IHumanoidActions instance)
         {
-            if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
+            if (m_Wrapper.m_HumanoidActionsCallbackInterface != null)
             {
-                @Walk.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnWalk;
-                @Walk.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnWalk;
-                @Walk.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnWalk;
-                @Jump.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                @Move.started -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnMove;
+                @Interact.started -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnInteract;
+                @Jump.started -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_HumanoidActionsCallbackInterface.OnJump;
             }
-            m_Wrapper.m_CharacterActionsCallbackInterface = instance;
+            m_Wrapper.m_HumanoidActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Walk.started += instance.OnWalk;
-                @Walk.performed += instance.OnWalk;
-                @Walk.canceled += instance.OnWalk;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
             }
         }
     }
-    public CharacterActions @Character => new CharacterActions(this);
+    public HumanoidActions @Humanoid => new HumanoidActions(this);
     public interface IFlightActions
     {
         void OnMainThrust(InputAction.CallbackContext context);
@@ -516,9 +556,10 @@ public partial class @GaliTaxiInput : IInputActionCollection2, IDisposable
         void OnFlipMode(InputAction.CallbackContext context);
         void OnArmDisarm(InputAction.CallbackContext context);
     }
-    public interface ICharacterActions
+    public interface IHumanoidActions
     {
-        void OnWalk(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
     }
 }

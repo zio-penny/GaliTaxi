@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using static GaliTaxiInput;
-
-public interface ILanderInput
+﻿public interface ILanderInput
 
 {
     public float MainThrottle { get; }

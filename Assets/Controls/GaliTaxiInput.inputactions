@@ -198,11 +198,11 @@
             ]
         },
         {
-            "name": "Character",
+            "name": "Humanoid",
             "id": "3d836d20-6c8e-4a1a-92bf-fc9eb017938d",
             "actions": [
                 {
-                    "name": "Walk",
+                    "name": "Move",
                     "type": "Value",
                     "id": "f8504971-04a3-4769-a56e-3d96f2841448",
                     "expectedControlType": "Vector2",
@@ -211,9 +211,18 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "444a9863-b935-4b4c-b7d7-d218e1195413",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "9807cd70-650b-4694-bf9e-3dd835336fcb",
+                    "id": "fb6913bd-3f70-41d5-ba04-605631acf154",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -228,7 +237,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -239,7 +248,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -250,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -261,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -272,7 +281,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -283,13 +292,35 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Walk",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "fbf75bc6-de55-488d-a948-ef8da25b09cd",
+                    "id": "d6f2b633-83b7-4e45-adc9-4df7eed3e2f0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69559379-33b5-4050-9cf9-08af9cad0b4c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b2b3580-0693-4b6d-9060-f5cb77f3512b",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -300,7 +331,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6c940417-0bac-40c2-9da4-1f43351b7379",
+                    "id": "8b08ae50-70ee-475f-a684-3317600506f0",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",

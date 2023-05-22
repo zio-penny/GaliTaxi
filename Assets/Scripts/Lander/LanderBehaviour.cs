@@ -17,8 +17,18 @@ public class LanderBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Rigidbody otherRB = collision.gameObject.GetComponent<Rigidbody>();
+        if (otherRB)
+        {
+            float relativeMass = otherRB.mass / _rigidBody.mass;
+            if(relativeMass < 1.0f)
+            {
+                AddHullPoints(-1 * collision.relativeVelocity.magnitude * _rigidBody.mass * relativeMass);
+            }
+            Debug.Log($"RB Collision: {collision.relativeVelocity.magnitude * _rigidBody.mass * relativeMass} hp, Relative Mass: {relativeMass}, Remaining Hull: {_hullPoints}");
+        }
+            
         AddHullPoints(-1 * collision.relativeVelocity.magnitude * _rigidBody.mass);
-        Debug.Log($"Collision Damage: {collision.relativeVelocity.magnitude * _rigidBody.mass}");
         Debug.Log($"Remaining Hull: {_hullPoints}");
     }
 
