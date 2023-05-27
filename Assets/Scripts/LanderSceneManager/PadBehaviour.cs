@@ -7,9 +7,9 @@ public class PadBehaviour : MonoBehaviour
     [SerializeField] Color _gizmoColor = new Color(186 / 255f, 218 / 255f, 85 / 255f);
     
     List<LanderBehaviour> _landers = new List<LanderBehaviour>();
+
     public List<LanderBehaviour> Landers => _landers;
-
-
+    
     public void Dock(LanderBehaviour lander)
     {
         if (_landers.Contains(lander))

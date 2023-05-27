@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Yaw",
+                    "name": "Strafe",
                     "type": "Value",
                     "id": "a7dfa19c-c90e-41f3-bb10-240ec19a6c9c",
                     "expectedControlType": "Axis",
@@ -24,16 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Overdrive",
-                    "type": "Button",
-                    "id": "f39cdf91-9621-4516-b57b-eabc36d7cb1e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "FlipMode",
+                    "name": "Toggle Struts",
                     "type": "Button",
                     "id": "cadc1725-b3fb-4465-9220-c5812531a114",
                     "expectedControlType": "Button",
@@ -114,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "Strafe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -125,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "Strafe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -136,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "Strafe",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -147,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "Strafe",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -158,29 +149,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "Strafe",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "32cc0e57-8c93-454a-9e14-3b9700d31cb1",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
+                    "id": "834c04a8-9843-4976-aa9c-cfff325d99b8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "Overdrive",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "59ce522b-5823-43b0-aba0-49c004af862e",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FlipMode",
+                    "action": "Toggle Struts",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -52,7 +52,6 @@ MonoBehaviour:
   _strutDamper: 32
   _strutGrip: 0.5
   _strutMass: 0.5
-  _parentRB: {fileID: 0}
   _footPrefab: {fileID: 8237568018854582218, guid: bb05e76423a35494bacbd9ff8ae0da2a,
     type: 3}
 --- !u!1 &918067864628464697
@@ -110,9 +109,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9147566210725152955}
   - component: {fileID: 8468959682395422018}
+  - component: {fileID: 2126408662251819447}
   - component: {fileID: 8468959682395422019}
   - component: {fileID: 4819578575919489300}
-  - component: {fileID: 2126408662251819447}
   m_Layer: 7
   m_Name: LanderPawn
   m_TagString: Player
@@ -154,6 +153,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &2126408662251819447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931542254907501544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ed7726e3996544be34c24376ed6f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHullPoints: 256
+  _mainPower: 48
+  _strafePower: 32
 --- !u!114 &8468959682395422019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +184,7 @@ MonoBehaviour:
   _isUprighting: 1
   UprightStrength: 32
   UprightDamper: 8
-  _mainPower: 256
-  _strafePower: 64
+  _lander: {fileID: 0}
 --- !u!114 &4819578575919489300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,20 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25f6004ca3c65848a3a412601601ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _struts: {fileID: 9150077837955494263}
---- !u!114 &2126408662251819447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2931542254907501544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083ed7726e3996544be34c24376ed6f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHullPoints: 256
 --- !u!1 &5008179899294640136
 GameObject:
   m_ObjectHideFlags: 0

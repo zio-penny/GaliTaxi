@@ -15,14 +15,12 @@ public class HumanoidLegs : MonoBehaviour
     [SerializeField] Rigidbody _parentRB;
     [SerializeField] GameObject _footPrefab;
 
-    //ILanderInput _input;
+    //LanderBehaviour _parentLander;
+    //PadBehaviour _currentPad = null;
+    //bool _isDocked = false;
 
-    LanderBehaviour _parentLander;
-    PadBehaviour _currentPad = null;
-    bool _isDocked = false;
-
-    GameObject _leftFootVisual;
-    GameObject _rightFootVisual;
+    //GameObject _leftFootVisual;
+    //GameObject _rightFootVisual;
 
     public Vector3 LeftStrutOrigin => transform.position + (-transform.right * _strutWidth);
     public Vector3 RightStrutOrigin => transform.position + (transform.right * _strutWidth);
@@ -30,24 +28,14 @@ public class HumanoidLegs : MonoBehaviour
     private void Awake()
     {
         _parentRB = GetComponentInParent<Rigidbody>();
-        _parentLander = _parentRB.GetComponent<LanderBehaviour>();
+        //_parentLander = _parentRB.GetComponent<LanderBehaviour>();
         //_input = GetComponentInParent<ILanderInput>();
-    }
-
-    private void OnEnable()
-    {
-
-    }
-
-    private void OnDisable()
-    {
-
     }
 
     private void Start()
     {
-        _leftFootVisual = Instantiate(_footPrefab, transform);
-        _rightFootVisual = Instantiate(_footPrefab, transform);
+        //_leftFootVisual = Instantiate(_footPrefab, transform);
+        //_rightFootVisual = Instantiate(_footPrefab, transform);
     }
     private void FixedUpdate()
     {
@@ -70,11 +58,11 @@ public class HumanoidLegs : MonoBehaviour
             float xVelocity = worldVelocity.x;
             float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
             _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, LeftStrutOrigin);
-            _leftFootVisual.transform.position = leftHit.point;
+            //_leftFootVisual.transform.position = leftHit.point;
         }
         else
         {
-            _leftFootVisual.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
+            //_leftFootVisual.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
         }
 
         if (Physics.Raycast(RightStrutOrigin, -transform.up, out rightHit, _strutHeight + _strutSensor))
@@ -90,31 +78,31 @@ public class HumanoidLegs : MonoBehaviour
             float xVelocity = worldVelocity.x;
             float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
             _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, RightStrutOrigin);
-            _rightFootVisual.transform.position = rightHit.point;
+            //_rightFootVisual.transform.position = rightHit.point;
         }
         else
         {
-            _rightFootVisual.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);
+            //_rightFootVisual.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);
         }
 
-        if (leftPad && rightPad)
-        {
-            if (leftPad == rightPad && _parentRB.velocity.magnitude < 0.01f && !_isDocked)
-            {
-                _currentPad = rightPad;
-                _currentPad.Dock(_parentLander);
-                _isDocked = true;
-            }
-        }
-        else
-        {
-            if (_currentPad)
-            {
-                _currentPad.Undock(_parentLander);
-                _currentPad = null;
-            }
-            _isDocked = false;
-        }
+        //if (leftPad && rightPad)
+        //{
+        //    if (leftPad == rightPad && _parentRB.velocity.magnitude < 0.01f && !_isDocked)
+        //    {
+        //        _currentPad = rightPad;
+        //        _currentPad.Dock(_parentLander);
+        //        _isDocked = true;
+        //    }
+        //}
+        //else
+        //{
+        //    if (_currentPad)
+        //    {
+        //        _currentPad.Undock(_parentLander);
+        //        _currentPad = null;
+        //    }
+        //    _isDocked = false;
+        //}
     }
 
     private void OnDrawGizmosSelected()

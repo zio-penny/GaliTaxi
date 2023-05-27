@@ -5,14 +5,22 @@ public class LanderBehaviour : MonoBehaviour
     [SerializeField] float _maxHullPoints = 128f;
     float _hullPoints = 128f;
 
+    [SerializeField] float _mainPower = 48f;
+    public float MainPower => _mainPower;
+
+    [SerializeField] float _strafePower = 32f;
+    public float StrafePower => _strafePower;
+
     Rigidbody _rigidBody;
+    public Rigidbody Rigidbody => _rigidBody;
+
+    ILanderInput _landerInput;
+    public ILanderInput Input => _landerInput;
     
     private void Awake()
     {
-        if(_rigidBody == null)
-        {
-            _rigidBody = GetComponent<Rigidbody>();
-        }
+        _rigidBody = GetComponent<Rigidbody>();
+        _landerInput = GetComponent<ILanderInput>();
     }
 
     private void OnCollisionEnter(Collision collision)

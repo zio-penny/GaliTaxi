@@ -13,12 +13,12 @@ public class LanderStruts : MonoBehaviour
 
     [SerializeField, Range(0.0f, 1.0f)] private float _strutGrip = 0.6f;
     [SerializeField] private float _strutMass = 16f;
-    [SerializeField] Rigidbody _parentRB;
     [SerializeField] GameObject _footPrefab;
 
+    LanderBehaviour _parentLander;
+    Rigidbody _parentRB;
     ILanderInput _input;
 
-    LanderBehaviour _parentLander;
     PadBehaviour _currentPad = null;
     bool _isDocked = false;
 
@@ -28,16 +28,23 @@ public class LanderStruts : MonoBehaviour
     public Vector3 LeftStrutOrigin => transform.position + (-transform.right * _strutWidth);
     public Vector3 RightStrutOrigin => transform.position + (transform.right * _strutWidth);
 
-    private void Awake()
+    private void Start()
     {
-        _parentRB = GetComponentInParent<Rigidbody>();
-        _parentLander = _parentRB.GetComponent<LanderBehaviour>();
-        _input = GetComponentInParent<ILanderInput>();
+        _parentLander = GetComponentInParent<LanderBehaviour>();
+        _parentRB = _parentLander.Rigidbody;
+        
+        _input = _parentLander.Input;
+        _input.OnStrutToggle += ToggleStruts;
+
+        _leftFootVisual = Instantiate(_footPrefab, transform);
+        _leftFootVisual.SetActive(_strutEnabled);
+        _rightFootVisual = Instantiate(_footPrefab, transform);
+        _rightFootVisual.SetActive(_strutEnabled);
     }
 
     private void OnEnable()
     {
-        _input.OnStrutToggle += ToggleStruts;
+        if(_input != null) _input.OnStrutToggle += ToggleStruts;
     }
 
     private void OnDisable()
@@ -45,13 +52,7 @@ public class LanderStruts : MonoBehaviour
         _input.OnStrutToggle -= ToggleStruts;
     }
 
-    private void Start()
-    {   
-        _leftFootVisual = Instantiate(_footPrefab, transform);
-        _leftFootVisual.SetActive(_strutEnabled);
-        _rightFootVisual = Instantiate(_footPrefab, transform);
-        _rightFootVisual.SetActive(_strutEnabled);
-    }
+        
     private void FixedUpdate()
     {
         if (_strutEnabled)
@@ -68,14 +69,20 @@ public class LanderStruts : MonoBehaviour
 
                 Vector3 worldVelocity = _parentRB.GetPointVelocity(LeftStrutOrigin);
                 float offset = _strutHeight - leftHit.distance;
-                float velocity = Vector3.Dot(transform.up, worldVelocity);
-                float force = (offset * _strutStrength) - (velocity * _strutDamper);
+                if (offset < 0f && _input.MainThrottle > 0.25f) // should probably inverse this or something
+                {
+                    
+                } else
+                {
+                    float velocity = Vector3.Dot(transform.up, worldVelocity);
+                    float force = (offset * _strutStrength) - (velocity * _strutDamper);
 
-                _parentRB.AddForceAtPosition(transform.up * force, LeftStrutOrigin);
-                float xVelocity = worldVelocity.x;
-                float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
-                _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, LeftStrutOrigin);
-                _leftFootVisual.transform.position = leftHit.point;
+                    _parentRB.AddForceAtPosition(transform.up * force, LeftStrutOrigin);
+                    float xVelocity = worldVelocity.x;
+                    float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
+                    _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, LeftStrutOrigin);
+                    _leftFootVisual.transform.position = leftHit.point;
+                }
             } else
             {
                 _leftFootVisual.transform.position = LeftStrutOrigin + (-transform.up * _strutHeight);
@@ -87,14 +94,20 @@ public class LanderStruts : MonoBehaviour
 
                 Vector3 worldVelocity = _parentRB.GetPointVelocity(RightStrutOrigin);
                 float offset = _strutHeight - rightHit.distance;
-                float velocity = Vector3.Dot(transform.up, worldVelocity);
-                float force = (offset * _strutStrength) - (velocity * _strutDamper);
+                if (offset < 0f && _input.MainThrottle > 0.25f) 
+                { 
+                
+                } else
+                {
+                    float velocity = Vector3.Dot(transform.up, worldVelocity);
+                    float force = (offset * _strutStrength) - (velocity * _strutDamper);
 
-                _parentRB.AddForceAtPosition(transform.up * force, RightStrutOrigin);
-                float xVelocity = worldVelocity.x;
-                float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
-                _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, RightStrutOrigin);
-                _rightFootVisual.transform.position = rightHit.point;
+                    _parentRB.AddForceAtPosition(transform.up * force, RightStrutOrigin);
+                    float xVelocity = worldVelocity.x;
+                    float desiredAcceleration = (-xVelocity * _strutGrip) / Time.fixedDeltaTime;
+                    _parentRB.AddForceAtPosition(Vector3.right * _strutMass * desiredAcceleration, RightStrutOrigin);
+                    _rightFootVisual.transform.position = rightHit.point;
+                }
             } else
             {
                 _rightFootVisual.transform.position = RightStrutOrigin + (-transform.up * _strutHeight);

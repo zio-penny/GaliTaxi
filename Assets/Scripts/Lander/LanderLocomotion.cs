@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class LanderLocomotion : BaseLocomotion
 {
-    [SerializeField] float _mainPower = 48f;
-    [SerializeField] float _strafePower = 32f;
-    [SerializeField] ILanderInput _controller;
+    [SerializeField] LanderBehaviour _lander;
     
     override protected void Awake()
     {
         base.Awake();
-        _controller = GetComponent<LanderController>();
-
+        _lander = GetComponent<LanderBehaviour>();
     }
 
     override protected void FixedUpdate()
     {
         base.FixedUpdate();
-        _body.AddForce(_controller.MainThrottle * _mainPower * transform.up + _controller.StrafeThrottle * _strafePower * transform.right);
+        _body.AddForce(_lander.Input.MainThrottle * _lander.MainPower * transform.up + _lander.Input.StrafeThrottle * _lander.StrafePower * transform.right);
     }
 }
